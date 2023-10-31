@@ -11,7 +11,7 @@ function Exam04(){
     //- text가 변하면 length가 변해야 한다.
     //- 수동으로 하는 것이 아니라 자동으로 변하도록 설정할 수 있다
     //- useEffect 훅 사용
-    //- useEffect (함수, [감지항목]);//컨
+    //- useEffect (함수, [감지항목]);
     useEffect(()=>{
       setLength(text.length);
     },[text]);
