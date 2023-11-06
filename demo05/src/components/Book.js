@@ -47,6 +47,8 @@ const Book = (props)=>{
         }).catch({});
     };
 
+
+
     return(
         <div className="container-fluid">
             <div className="row">
@@ -98,6 +100,8 @@ const Book = (props)=>{
                     </div></div>
                 </div>
             </div>
+
+
         </div>
     );
 };
