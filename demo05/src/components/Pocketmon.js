@@ -1,11 +1,26 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import {MdCancel} from "react-icons/md";
+import {BiEditAlt} from "react-icons/bi";
 
 const Pocketmon = (props)=>{
     const [pocketmonList, setPocketmonList] = useState([]);
 
+    const loadPocketmon = ()=>{
+        axios({
+            url:"http://localhost:8080/pocketmon/",
+            method:"get"
+        })
+        .then(response=>{
+            // console.log(response);
+            setPocketmonList(response.data);
+        })
+        .catch(err=>{});
+            }
+
     useEffect(()=>{
         //서버에서 pocketmon list를 불러와서 state에 설정하는 코드
+        
         axios({
             url:"http://localhost:8080/pocketmon/",
             method:"get"
@@ -16,6 +31,23 @@ const Pocketmon = (props)=>{
         })
         .catch(err=>{});
     },[]);
+
+    //포켓몬스터 삭제
+    // - 이제는 state에서 삭제하는 것이 아니라 서버에 통신을 보낸 뒤 목록을 갱신하면 된다
+    const deletePocketmon = (pocketmon) => {
+        const choice = window.confirm("정말 삭제하시겠습니까?")
+        if(choice === false) return;
+        
+        //axios({옵션}).then(성공시 실행할 함수).catch(실패시 실행할 함수);
+        axios({
+            url:`http://localhost:8080/pocketmon/${pocketmon.no}`,
+            method:"delete"
+        })
+        .then(response=>{
+            loadPocketmon();
+        })
+        .catch(err=>{});
+    };
 
     return(
 
@@ -42,8 +74,9 @@ const Pocketmon = (props)=>{
                                         <td>{pocketmon.name}</td>
                                         <td>{pocketmon.type}</td>
                                         <td>
-                                            <button className="btn btn-primary">수정</button>
-                                            <button className="btn btn-danger ms-2">삭제</button>
+                                        <BiEditAlt className="text-warning ms-2"size="20"/>
+                                        <MdCancel className="text-danger ms-2"
+                                        onClick={e=>deletePocketmon(pocketmon)}/>
                                         </td>
                                     </tr>
                                 ))}
