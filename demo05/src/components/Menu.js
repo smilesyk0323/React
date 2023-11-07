@@ -1,5 +1,5 @@
 import { NavLink, useLocation } from "react-router-dom";
-import "bootstrap/dist/js/bootstrap";
+
 
 const Menu = props =>{
     const location = useLocation();
