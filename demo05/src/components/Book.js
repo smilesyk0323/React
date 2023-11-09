@@ -60,6 +60,15 @@ const Book = (props)=>{
         });
     };
 
+    //등록창 초기화
+    const clearBook = ()=>{
+        setBook({
+            bookTitle:"", bookAuthor:"", bookPublicationDate:"",bookPrice:0,bookPublisher:"",
+            bookPageCount:0, bookGenre:""
+        });
+    };
+
+
     //modal 
     const bsModal = useRef();
     const openModal = ()=>{
@@ -74,15 +83,8 @@ const Book = (props)=>{
     };
 
 
-    //등록창 초기화
-    const clearBook = ()=>{
-        setBook({
-            bookTitle:"", bookAuthor:"", bookPublicationDate:"",bookPrice:0,bookPublisher:"",
-            bookPageCount:0, bookGenre:""
-        });
-    };
 
-    //저장
+    // 저장
     // const addBook = () =>{
     //     axios({
     //         url:"http://localhost:8080/book/",
