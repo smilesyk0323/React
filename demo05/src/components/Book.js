@@ -107,7 +107,7 @@ const Book = (props)=>{
             data: book
         });
         loadBook();
-        closeModal();
+        closeModal(); 
     };
     
     const editBook = (target)=>{
