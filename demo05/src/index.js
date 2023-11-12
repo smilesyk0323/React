@@ -15,15 +15,17 @@ import "bootstrap";
 // - HashRouter는 주소에 해시(#)가 포함된다
 // - BrowserRouter는 주소에 해시(#)가 포함되지 않는다
 import {BrowserRouter, HashRouter} from 'react-router-dom';
+import { RecoilRoot } from 'recoil';
 
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-<HashRouter>
-  <App />
-</HashRouter>
-
+  <HashRouter>
+    <RecoilRoot>
+      <App />
+    </RecoilRoot>
+  </HashRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function

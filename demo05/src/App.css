@@ -1,0 +1,50 @@
+
+  :root,
+[data-bs-theme=light] {
+  --bs-primary: #218C74;
+  --bs-primary-rgb: 33, 140, 116;
+  --bs-primary-text-emphasis: #165849;
+  --bs-primary-bg-subtle: #A8EADB;
+}
+.btn-primary {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #218C74 !important;
+    --bs-btn-border-color: #218C74;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #165849;
+    --bs-btn-hover-border-color: #165849;
+    --bs-btn-focus-shadow-rgb: 49, 132, 253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #165849;
+    --bs-btn-active-border-color: #165849;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #218C74;
+    --bs-btn-disabled-border-color: #218C74;
+  }
+
+
+  
+li {
+    list-style-type: none;
+}
+
+/* "::after" 가상 요소를 숨김 */
+.dropdown-toggle::after {
+    content: none;
+    display: none;
+}
+
+/* 화면 폭이 1200px 미만일 때 Nav 아이템 간격 조절 */
+@media (max-width: 1200px) {
+  .navbar-nav .nav-link {
+    margin-right: 10px; /* 아이템 간격을 조절하려면 필요한 간격 크기로 변경 */
+  }
+}
+
+@media (max-width: 400px) {
+  .container-fluid {
+    min-width: 400px;
+  }
+}
+
