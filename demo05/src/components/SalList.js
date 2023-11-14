@@ -1,8 +1,11 @@
+import { useLocation } from 'react-router-dom'
 import { useEffect, useState } from "react";
 import axios from "axios";
 
 const SalList=(props)=>{
     const[salLists, setSalLists] = useState([]);
+
+    const location = useLocation();
 
     useEffect(()=>{
         //서버에서 급여내역 list 불러와서 state에 설정하는 코드 
@@ -19,6 +22,13 @@ const SalList=(props)=>{
         });
 
     },[]);
+
+
+       // 총 지급액 계산 함수
+       const calculateTotalSalary = (salList) => {
+        return salList.salListTotal - (salList.salListHealth + salList.salListLtcare + salList.salListNational + salList.salListEmp + salList.salListWork + salList.salListLocal);
+    };
+
 
 
     return(
@@ -52,6 +62,7 @@ const SalList=(props)=>{
                                             <td>{salList.salListEmp.toLocaleString()} 원</td>
                                             <td>{salList.salListWork.toLocaleString()} 원</td>
                                             <td>{salList.salListLocal.toLocaleString()} 원</td>
+                                            <td>{calculateTotalSalary(salList).toLocaleString()} 원</td>
 
                                         </tr>
                                         ))}

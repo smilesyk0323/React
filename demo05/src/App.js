@@ -1,4 +1,4 @@
-import { NavLink, Route, Routes } from 'react-router-dom';
+import { NavLink, Route, Routes, useLocation } from 'react-router-dom';
 import Book from './components/Book';
 import Pocketmon from './components/Pocketmon';
 import Home from './components/Home';
@@ -23,6 +23,8 @@ import SalList from './components/SalList';
 
 
 function App() {
+
+  const location = useLocation();
     
   return (
     <div className="container-fluid">
@@ -43,8 +45,8 @@ function App() {
       </div> */}
                 <div className="main-content container-fluid">
 
-                  <div className='mt-4 ms-1'>
-                    <div className='col-10 offset-1'>
+                  <div className='row'>
+                    <div className='col-10 offset-1 me-5'>
 
                   <div className='row '>
                       <div className='col-8 me-auto'>
@@ -52,7 +54,6 @@ function App() {
                           <img src={TeamUpLogo} alt="TemaUpLog" width={100}/>
                           <button className="btn btn-primary ms-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">조직도</button>
                           </Navbar.Brand>
-                          <NavLink to="/SalList">급여내역</NavLink>
                       </div>
 
                     <div className='col-4  'style={{  padding:0, marginRight: 'auto !important'}}>
@@ -66,9 +67,11 @@ function App() {
                               <div className='col-2'>
                                 <Navbar expand="sm" className="bg-body-white ">
                                     <Nav className="bg-body-primary ">
-                                        <NavDropdown style={{padding:0}} title={<CgProfile className="me-3" size={50}style={{color:'#218C74'}} />} id="basic-nav-dropdown">
-                                        <NavDropdown.Item href="#action/3.1" >Action</NavDropdown.Item>
-                                        <NavDropdown.Item href="#action/3.2"> Another action</NavDropdown.Item>
+                                        <NavDropdown style={{padding:0}} title={<CgProfile className="me-3" size={50}style={{color:'#218C74'}} />} id="basic-nav-dropdown">  
+                                        <NavLink  className={`nav-link ${location.pathname === '/salList' ? 'active' : ''}`} to='/salList'>
+                                            <NavDropdown.Item className={`nav-link ${location.pathname === '/salList' ? 'active' : ''}`} href='/salList'>급여내역</NavDropdown.Item>
+                                          </NavLink>                                  
+                                            <NavDropdown.Item href="#action/3.2"> Another action</NavDropdown.Item>
                                         </NavDropdown>
                                     </Nav>
                                 </Navbar>
@@ -86,7 +89,7 @@ function App() {
                           <div className='row'>
                           <div className=' col-md-10 offset-md-1'> 
                               <Routes>
-                                <Route path="/SalList" element={<SalList/>}></Route>
+                                <Route path="/salList" element={<SalList/>}></Route>
                               </Routes>
                           </div>
                         </div>
