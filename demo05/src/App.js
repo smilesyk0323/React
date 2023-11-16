@@ -5,6 +5,7 @@ import Home from './components/Home';
 import Menu from './components/Menu';
 import BookInfinite from './components/BookInfinite';
 import './App.css';
+import { useState } from 'react';
 // import "./components/styles.css";
 import Sidebar from './components/Sidebar';
 import {CgProfile} from "react-icons/cg";
@@ -15,6 +16,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'; // 부트스트랩 CSS 파일 임
 import 'bootstrap/dist/js/bootstrap.bundle.min'; // 부트스트랩 JavaScript 파일 임포트
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
+import Offcanvas from 'react-bootstrap/Offcanvas';
 import SalList from './components/SalList';
 
 
@@ -23,9 +25,13 @@ import SalList from './components/SalList';
 
 
 function App() {
-
   const location = useLocation();
-    
+  const [show, setShow] = useState(true);
+
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
+
+
   return (
     <div className="container-fluid">
       {/* 상단 메뉴 영역 */}
@@ -49,10 +55,10 @@ function App() {
                     <div className='col-10 offset-1 me-5'>
 
                   <div className='row '>
-                      <div className='col-8 me-auto'>
+                      <div className='col-8 me-auto mt-3'>
                         <Navbar.Brand href="#home">
                           <img src={TeamUpLogo} alt="TemaUpLog" width={100}/>
-                          <button className="btn btn-primary ms-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">조직도</button>
+                          <Button onClick={handleShow} className=" btn btn-primary">조직도</Button>
                           </Navbar.Brand>
                       </div>
 
@@ -95,17 +101,18 @@ function App() {
                         </div>
 
                 {/* 조직도 offcanvas  */}
-                <div className='row'><div className='col-10 offset-1'>   
-                    <div className="offcanvas offcanvas-end" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-                    <div className="offcanvas-header">
-                            <h5 className="offcanvas-title" id="offcanvasRightLabel">조직도</h5>
-                            <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                        </div>
-                        <div className="offcanvas-body">
-                            조직도 자리 
-                        </div>
-                    </div>
-                </div></div>
+
+                        <>
+                          
+                          <Offcanvas show={show} onHide={handleClose} placement='end'>
+                            <Offcanvas.Header closeButton>
+                              <Offcanvas.Title>조직도</Offcanvas.Title>
+                            </Offcanvas.Header>
+                            <Offcanvas.Body>
+                             조직도 자리 
+                            </Offcanvas.Body>
+                          </Offcanvas>
+                        </>
 
                 {/* <div className='row'><div className='col'>
                     <Emp/>
