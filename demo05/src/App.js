@@ -38,9 +38,9 @@ function App() {
       <Sidebar />
       
       {/* 본문 영역 */}
-       {/*<div className='row'>
-        <div className=' col-sm-10 offset-sm-1'> */}
-        {/* <div className='col'>
+       <div className='row'>
+        <div className=' col-sm-10 offset-sm-1'>
+        <div className='col'>
           <Routes>
             <Route exact path="/" element={<Home />} />
             <Route path="/pocketmon" element={<Pocketmon />} />
@@ -48,8 +48,8 @@ function App() {
             <Route path="/book2" element={<BookInfinite />} />
           </Routes>
         </div>
-      </div> */}
-                <div className="main-content container-fluid">
+      </div>
+                {/* <div className="main-content container-fluid">
 
                   <div className='row'>
                     <div className='col-10 offset-1 me-5'>
@@ -92,17 +92,17 @@ function App() {
                     </div>
                     {/* 본문 */}
 
-                          <div className='row'>
+                          {/* <div className='row'>
                           <div className=' col-md-10 offset-md-1'> 
                               <Routes>
                                 <Route path="/salList" element={<SalList/>}></Route>
                               </Routes>
                           </div>
-                        </div>
+                        </div> */}
 
                 {/* 조직도 offcanvas  */}
 
-                        <>
+                        {/* <>
                           
                           <Offcanvas show={show} onHide={handleClose} placement='end'>
                             <Offcanvas.Header closeButton>
@@ -112,12 +112,12 @@ function App() {
                              조직도 자리 
                             </Offcanvas.Body>
                           </Offcanvas>
-                        </>
+                        </> */}
 
                 {/* <div className='row'><div className='col'>
                     <Emp/>
                 </div></div> */}
-            </div>
+            </div> 
 
 
 
